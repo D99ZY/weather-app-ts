@@ -1,10 +1,10 @@
 import type { JSX } from 'react';
 
-interface inputProps {
+interface InputProps {
   city: string;
 }
 
-const Input = ({ city }: inputProps): JSX.Element => {
+const Input = ({ city }: InputProps): JSX.Element => {
   return <div>Input: {city}</div>;
 };
 
