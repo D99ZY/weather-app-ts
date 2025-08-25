@@ -31,21 +31,44 @@
     }
   },
   "rules": {
-    "react/react-in-jsx-scope": "off",
+    // Disallow usage of console (except console.warn and console.error)
+    "no-console": ["error", { "allow": ["warn", "error"] }],
+
+    // Warn if declared variables are not used (ignores variables starting with A-Z or _)
     "@typescript-eslint/no-unused-vars": [
       "warn",
       { "varsIgnorePattern": "^[A-Z_]" }
     ],
-    "import/no-extraneous-dependencies": ["error", {"devDependencies": [
-      "vite.config.ts"
-    ]}],
+
+    // Enforce consistent spacing around colon in object literals
     "key-spacing": "warn",
-    "no-console": ["error", { "allow": ["warn", "error"] }],
+
+    // Disallow importing dependencies not listed in package.json (except devDependencies like vite.config.ts)
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": ["vite.config.ts"]
+      }
+    ],
+
+    // Enforce arrow functions for function components (disabled here, since rule is "off")
+    "react/function-component-definition": [
+      "off",
+      {
+        "namedComponents": "arrow-function",
+        "unnamedComponents": "arrow-function"
+      }
+    ],
+
+    // Allow JSX in files with these extensions
     "react/jsx-filename-extension": [
       "warn",
       {
         "extensions": [".js", ".jsx", ".ts", ".tsx"]
       }
-    ]
+    ],
+
+    // React 17+ with the new JSX transform doesn't require React in scope, so this rule is turned off
+    "react/react-in-jsx-scope": "off"
   }
 }
