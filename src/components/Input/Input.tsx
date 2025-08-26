@@ -1,11 +1,21 @@
-import type { JSX } from 'react';
+import { forwardRef } from 'react';
+import type { InputProps } from '../../types/input.ts';
+import styles from './Input.module.css';
 
-interface InputProps {
-  city: string;
-}
-
-const Input = ({ city }: InputProps): JSX.Element => {
-  return <div>Input: {city}</div>;
-};
+const Input = forwardRef<HTMLInputElement, InputProps>(({ handleSearch }, ref) => {
+  return (
+    <div className={styles.search}>
+      <input
+        placeholder="Enter City"
+        ref={ref}
+        onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
+          if (e.key === 'Enter') {
+            handleSearch(e.currentTarget.value);
+          }
+        }}
+      />
+    </div>
+  );
+});
 
 export default Input;
