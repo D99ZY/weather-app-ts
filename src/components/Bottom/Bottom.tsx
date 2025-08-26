@@ -1,10 +1,8 @@
-import type { JSX } from 'react';
-
 interface BottomProps {
   city: string;
 }
 
-const Bottom = ({ city }: BottomProps): JSX.Element => {
+const Bottom = ({ city }: BottomProps) => {
   return <div>Bottom: {city}</div>;
 };
 export default Bottom;

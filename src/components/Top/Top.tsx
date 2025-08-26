@@ -1,10 +1,8 @@
-import type { JSX } from 'react';
-
 interface TopProps {
   city: string;
 }
 
-const Top = ({ city }: TopProps): JSX.Element => {
+const Top = ({ city }: TopProps) => {
   return <div>Top: {city}</div>;
 };
 
