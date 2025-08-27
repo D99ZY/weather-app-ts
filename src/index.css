@@ -1,4 +1,3 @@
-
 /*#region CSS Global Reset*/
 
 /* Box sizing rules */
@@ -31,6 +30,7 @@ ol[role='list'] {
 body {
   min-height: 100vh;
   line-height: 1.5;
+  background: transparent;
 }
 
 /* Set shorter line heights on headings and interactive elements */
@@ -75,6 +75,13 @@ textarea:not([rows]) {
   scroll-margin-block: 5ex;
 }
 
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
 /*#endregion CSS Global Reset*/
 
 :root {
@@ -84,7 +91,6 @@ textarea:not([rows]) {
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
