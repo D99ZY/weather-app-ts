@@ -6,6 +6,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(({ handleSearch }, ref) =
   return (
     <div className={styles.search}>
       <input
+        type="text"
         placeholder="Enter City"
         ref={ref}
         onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -17,5 +18,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(({ handleSearch }, ref) =
     </div>
   );
 });
+
+Input.displayName = 'Input';
 
 export default Input;
