@@ -1,5 +1,5 @@
 interface TopProps {
-  city: string;
+  city: string | null;
 }
 
 const Top = ({ city }: TopProps) => {

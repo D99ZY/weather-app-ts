@@ -1,8 +1,8 @@
 interface BottomProps {
-  city: string;
+  country: string | null;
 }
 
-const Bottom = ({ city }: BottomProps) => {
-  return <div>Bottom: {city}</div>;
+const Bottom = ({ country }: BottomProps) => {
+  return <div>Bottom: {country}</div>;
 };
 export default Bottom;
