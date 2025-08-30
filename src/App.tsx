@@ -80,7 +80,7 @@ function App() {
       <div className={styles.background} />
       <div className={styles.content}>
         <Input ref={inputRef} handleSearch={handleSearch} />
-        <Top city={geoData?.name ?? null} />
+        <Top geoData={geoData} weatherData={weatherData} />
         <Bottom country={weatherData?.weather[0].description ?? null} />
       </div>
     </div>
