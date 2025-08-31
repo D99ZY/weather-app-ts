@@ -81,7 +81,7 @@ function App() {
       <div className={styles.content}>
         <Input ref={inputRef} handleSearch={handleSearch} />
         <Top geoData={geoData} weatherData={weatherData} />
-        <Bottom country={weatherData?.weather[0].description ?? null} />
+        <Bottom weatherData={weatherData} />
       </div>
     </div>
   );

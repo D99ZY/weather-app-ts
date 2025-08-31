@@ -1,0 +1,27 @@
+.bottom {
+  display: flex;
+  flex-direction: row;
+  justify-content:space-evenly;
+  text-align: center;
+  width: 80%;
+  margin: 1rem auto;
+  padding: 0.2rem 1rem;
+  background-color: rgba(255,255,255,0.2);
+  border-radius: 20px;
+}
+
+p {
+  color: white;
+}
+
+.feels {
+ color: brown;
+}
+
+.humidity {
+  color: teal;
+}
+
+.wind {
+  color: maroon;
+}
