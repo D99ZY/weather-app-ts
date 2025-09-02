@@ -8,6 +8,10 @@
   width: 100%;
 }
 
+.top div:first-child {
+  padding-bottom: 0.2rem;
+}
+
 .top div:not(:last-child) {
   margin-bottom: 0.2rem;
 }
@@ -19,7 +23,7 @@
 
 .temperature {
   text-align: center;
-  font-size: 2.8rem;
+  font-size: 4rem;
   font-weight: 700;
 }
 
