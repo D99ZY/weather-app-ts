@@ -12,6 +12,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(({ handleSearch }, ref) =
         onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
           if (e.key === 'Enter') {
             handleSearch(e.currentTarget.value);
+            e.currentTarget.blur();
           }
         }}
       />
