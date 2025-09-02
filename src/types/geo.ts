@@ -1,4 +1,5 @@
-export interface GeoDataApiResponseItem {
+// Raw API response
+export interface GeoDataApiResponse {
   name: string;
   local_names: Record<string, string>;
   lat: number;
@@ -7,12 +8,10 @@ export interface GeoDataApiResponseItem {
   state?: string;
 }
 
-export type GeoDataApiResponse = GeoDataApiResponseItem[];
-
-export interface GeoLocation {
+// Refined
+export interface GeoData {
   name: string;
   country: string;
-  state?: string;
   lat: number;
   lon: number;
 }

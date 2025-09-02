@@ -1,24 +1,22 @@
-import type { GeoDataApiResponseItem } from '../../types/geo.ts';
-import type { WeatherDataApiResponse } from '../../types/weather.ts';
+import type { GeoData } from '../../types/geo.ts';
+import type { WeatherData } from '../../types/weather.ts';
 import styles from './Top.module.css';
 
 interface TopProps {
-  geoData: GeoDataApiResponseItem | null;
-  weatherData: WeatherDataApiResponse | null;
+  geoData: GeoData | null;
+  weatherData: WeatherData | null;
 }
 
 const Top = ({ geoData, weatherData }: TopProps) => {
   return (
-    <div className={styles.top}>
+    <div className={weatherData ? styles.top : styles.hidden}>
       <div className={styles.location}>
-        <h2>{geoData ? `${geoData.name}, ${geoData.country}` : 'Loc'}</h2>
+        {geoData && weatherData ? `${geoData.name}, ${geoData.country}` : ''}
       </div>
       <div className={styles.temperature}>
-        <h1>{weatherData ? `${Math.round(weatherData.main.temp - 273.15)}°C` : 'Temp'}</h1>
+        {weatherData ? `${Math.round(weatherData.temperature - 273.15)}°C` : ''}
       </div>
-      <div className={styles.description}>
-        <h3>{weatherData?.weather[0].description ?? 'Desc'}</h3>
-      </div>
+      <div className={styles.description}>{weatherData?.description ?? ''}</div>
     </div>
   );
 };
