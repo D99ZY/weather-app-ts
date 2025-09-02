@@ -1,4 +1,4 @@
-/*#region CSS Global Reset*/
+/*#region CSS Reset*/
 
 /* Box sizing rules */
 *,
@@ -82,10 +82,10 @@ html, body {
   width: 100%;
 }
 
-/*#endregion CSS Global Reset*/
+/*#endregion CSS Reset*/
 
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: Outfit, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 

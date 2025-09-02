@@ -1,3 +1,7 @@
+.hidden {
+  display: none;
+}
+
 .bottom {
   display: flex;
   flex-direction: row;
@@ -5,23 +9,16 @@
   text-align: center;
   width: 100%;
   margin: 1rem auto;
-  padding: 0.2rem 1rem;
-  background-color: rgba(255,255,255,0.2);
+  padding: 0.8rem 1rem;
+  background-color: rgba(255,255,255,0.15);
   border-radius: 20px;
 }
 
 p {
   color: white;
+  font-size: 1rem;
 }
 
-.feels {
- color: brown;
-}
-
-.humidity {
-  color: teal;
-}
-
-.wind {
-  color: maroon;
+.bold {
+ font-weight: 700;
 }

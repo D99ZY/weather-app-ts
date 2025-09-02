@@ -1,21 +1,30 @@
+.hidden {
+  display: none;
+}
+
 .top {
-  border: 2px solid blue;
-
   display: flex;
-  flex-direction: column;;
-
-
+  flex-direction: column;
   width: 100%;
 }
 
+.top div:not(:last-child) {
+  margin-bottom: 0.2rem;
+}
+
 .location {
-  
+  font-size: 1.5rem;
+  font-weight: 500;
 }
 
 .temperature {
   text-align: center;
+  font-size: 2.8rem;
+  font-weight: 700;
 }
 
 .description {
   text-align: center;
+  font-size: 1.3rem;
+  font-weight: 400;
 }
