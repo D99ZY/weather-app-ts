@@ -8,9 +8,6 @@ import type { HandleSearch } from './types/input.ts';
 import styles from './App.module.css';
 
 function App() {
-  // Ref to the <input> DOM element
-  const inputRef = useRef(null);
-
   // State variables
   const [city, setCity] = useState<string | null>(null);
   const [geoData, setGeoData] = useState<GeoData | null>(null);
@@ -85,7 +82,7 @@ function App() {
     <div className={styles.container}>
       <div className={styles.background} />
       <div className={styles.content}>
-        <Input ref={inputRef} handleSearch={handleSearch} />
+        <Input handleSearch={handleSearch} />
         <Top geoData={geoData} weatherData={weatherData} />
         <Bottom weatherData={weatherData} />
       </div>
