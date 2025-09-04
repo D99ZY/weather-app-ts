@@ -8,16 +8,23 @@ const useFetch = () => {
   const [city, setCity] = useState<string | null>(null);
   const [geoData, setGeoData] = useState<GeoData | null>(null);
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState(null);
 
   // API Key
   const WEATHER_KEY = import.meta.env.VITE_WEATHER_API_KEY;
 
+  // API Base URL
+  const BASE_URL = 'https://api.openweathermap.org/';
+
   // Fetch coordinates based on city name
   const getCoords = useCallback(async () => {
     if (!city) return;
+    setLoading(true);
+
     try {
-      const geoUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${encodeURIComponent(city)}&appid=${WEATHER_KEY}`;
-      const response = await fetch(geoUrl);
+      const GEO_URL = `${BASE_URL}geo/1.0/direct?q=${encodeURIComponent(city)}&appid=${WEATHER_KEY}`;
+      const response = await fetch(GEO_URL);
       if (!response.ok) {
         throw new Error(`Error fetching geo data: ${response.status}`);
       }
@@ -29,18 +36,19 @@ const useFetch = () => {
         lon: dataRaw.lon,
       };
       setGeoData(data);
-    } catch (error) {
-      console.error(`Failed to fetch coordinates: ${error}`);
-      setGeoData(null);
+    } catch (e: any) {
+      setError(e);
+      console.error(`Failed to fetch weather: ${error}`);
+      setLoading(false);
     }
-  }, [city, WEATHER_KEY]);
+  }, [city, WEATHER_KEY, error]);
 
   // Fetch weather data from location coordinates
   const getWeather = useCallback(async () => {
     if (!geoData) return;
     try {
-      const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${geoData.lat}&lon=${geoData.lon}&appid=${WEATHER_KEY}`;
-      const response = await fetch(weatherUrl);
+      const WEATHER_URL = `${BASE_URL}data/2.5/weather?lat=${geoData.lat}&lon=${geoData.lon}&appid=${WEATHER_KEY}`;
+      const response = await fetch(WEATHER_URL);
       if (!response.ok) {
         throw new Error(`Error fetching geo data: ${response.status}`);
       }
@@ -53,11 +61,14 @@ const useFetch = () => {
         wind_speed: dataRaw.wind.speed,
       };
       setWeatherData(data);
-    } catch (error) {
+    } catch (e: any) {
+      setError(e);
       console.error(`Failed to fetch weather: ${error}`);
       setWeatherData(null);
+    } finally {
+      setLoading(false);
     }
-  }, [geoData, WEATHER_KEY]);
+  }, [geoData, WEATHER_KEY, error]);
 
   // Update city state variable with text input field value on enter key press
   const handleSearch: HandleSearch = (cityName) => {
@@ -75,6 +86,7 @@ const useFetch = () => {
   }, [geoData, getWeather]);
 
   return {
+    loading,
     handleSearch,
     geoData,
     weatherData,
