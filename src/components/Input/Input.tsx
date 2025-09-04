@@ -1,9 +1,10 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import type { InputProps } from '../../types/input.ts';
 import styles from './Input.module.css';
 
 const Input = ({ handleSearch }: InputProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
+  const [value, setValue] = useState<string>('');
 
   return (
     <div className={styles.search}>
@@ -11,10 +12,12 @@ const Input = ({ handleSearch }: InputProps) => {
         type="text"
         placeholder="Enter City"
         ref={inputRef}
+        value={value}
+        onChange={(e) => setValue(e.currentTarget.value)}
         onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
           if (e.key === 'Enter') {
-            handleSearch(e.currentTarget.value);
-            e.currentTarget.value = '';
+            handleSearch(value);
+            setValue('');
             e.currentTarget.blur();
           }
         }}
