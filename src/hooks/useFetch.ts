@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import type { GeoData, GeoDataApiResponse } from '../types/geo.ts';
 import type { WeatherData, WeatherDataApiResponse } from '../types/weather.ts';
 import type { HandleSearch } from '../types/input.ts';
@@ -11,6 +11,8 @@ const useFetch = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState(null);
 
+  const abortControllerRef = useRef<AbortController | null>(null);
+
   // API Key
   const WEATHER_KEY = import.meta.env.VITE_WEATHER_API_KEY;
 
@@ -20,11 +22,17 @@ const useFetch = () => {
   // Fetch coordinates based on city name
   const getCoords = useCallback(async () => {
     if (!city) return;
+
+    abortControllerRef.current?.abort();
+    abortControllerRef.current = new AbortController();
+
     setLoading(true);
 
     try {
       const GEO_URL = `${BASE_URL}geo/1.0/direct?q=${encodeURIComponent(city)}&appid=${WEATHER_KEY}`;
-      const response = await fetch(GEO_URL);
+      const response = await fetch(GEO_URL, {
+        signal: abortControllerRef.current?.signal,
+      });
       if (!response.ok) {
         throw new Error(`Error fetching geo data: ${response.status}`);
       }
@@ -39,6 +47,8 @@ const useFetch = () => {
     } catch (e: any) {
       setError(e);
       console.error(`Failed to fetch weather: ${error}`);
+      setCity(null);
+      setGeoData(null);
       setLoading(false);
     }
   }, [city, WEATHER_KEY, error]);
@@ -87,9 +97,9 @@ const useFetch = () => {
 
   return {
     loading,
-    handleSearch,
     geoData,
     weatherData,
+    handleSearch,
   };
 };
 

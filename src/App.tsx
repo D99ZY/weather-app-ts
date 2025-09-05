@@ -5,7 +5,7 @@ import Bottom from './components/Bottom/Bottom.tsx';
 import styles from './App.module.css';
 
 function App() {
-  const { loading, handleSearch, geoData, weatherData } = useFetch();
+  const { loading, geoData, weatherData, handleSearch } = useFetch();
 
   return (
     <div className={styles.container}>

@@ -3,8 +3,9 @@ import type { InputProps } from '../../types/input.ts';
 import styles from './Input.module.css';
 
 const Input = ({ handleSearch }: InputProps) => {
-  const inputRef = useRef<HTMLInputElement>(null);
   const [value, setValue] = useState<string>('');
+
+  const inputRef = useRef<HTMLInputElement>(null);
 
   return (
     <div className={styles.search}>
