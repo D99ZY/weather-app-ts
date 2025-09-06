@@ -46,12 +46,12 @@ const useFetch = () => {
       setGeoData(data);
     } catch (e: any) {
       setError(e);
-      console.error(`Failed to fetch weather: ${error}`);
+      console.error(`Failed to fetch weather: ${e}`);
       setCity(null);
       setGeoData(null);
       setLoading(false);
     }
-  }, [city, WEATHER_KEY, error]);
+  }, [city, WEATHER_KEY]);
 
   // Fetch weather data from location coordinates
   const getWeather = useCallback(async () => {
@@ -73,12 +73,12 @@ const useFetch = () => {
       setWeatherData(data);
     } catch (e: any) {
       setError(e);
-      console.error(`Failed to fetch weather: ${error}`);
+      console.error(`Failed to fetch weather: ${e}`);
       setWeatherData(null);
     } finally {
       setLoading(false);
     }
-  }, [geoData, WEATHER_KEY, error]);
+  }, [geoData, WEATHER_KEY]);
 
   // Update city state variable with text input field value on enter key press
   const handleSearch: HandleSearch = (cityName) => {
