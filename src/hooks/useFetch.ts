@@ -46,7 +46,6 @@ const useFetch = () => {
       setGeoData(data);
     } catch (e: any) {
       setError(e);
-      console.error(`Failed to fetch weather: ${e}`);
       setCity(null);
       setGeoData(null);
       setLoading(false);
@@ -73,7 +72,6 @@ const useFetch = () => {
       setWeatherData(data);
     } catch (e: any) {
       setError(e);
-      console.error(`Failed to fetch weather: ${e}`);
       setWeatherData(null);
     } finally {
       setLoading(false);
@@ -94,6 +92,11 @@ const useFetch = () => {
   useEffect(() => {
     getWeather();
   }, [geoData, getWeather]);
+
+  // Console error
+  useEffect(() => {
+    console.error(error);
+  }, [error]);
 
   return {
     loading,
