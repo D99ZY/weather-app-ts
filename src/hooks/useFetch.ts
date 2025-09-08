@@ -13,6 +13,8 @@ const useFetch = () => {
 
   const abortControllerRef = useRef<AbortController | null>(null);
 
+  const isMounted = useRef(false);
+
   // API Key
   const WEATHER_KEY = import.meta.env.VITE_WEATHER_API_KEY;
 
@@ -95,6 +97,11 @@ const useFetch = () => {
 
   // Console error
   useEffect(() => {
+    // Prevent run on initial render
+    if (!isMounted.current) {
+      isMounted.current = true;
+      return;
+    }
     console.error(error);
   }, [error]);
 
