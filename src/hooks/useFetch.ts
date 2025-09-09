@@ -50,6 +50,7 @@ const useFetch = () => {
       setError(e);
       setCity(null);
       setGeoData(null);
+      setWeatherData(null);
       setLoading(false);
     }
   }, [city, WEATHER_KEY]);
@@ -74,6 +75,8 @@ const useFetch = () => {
       setWeatherData(data);
     } catch (e: any) {
       setError(e);
+      setCity(null);
+      setGeoData(null);
       setWeatherData(null);
     } finally {
       setLoading(false);
