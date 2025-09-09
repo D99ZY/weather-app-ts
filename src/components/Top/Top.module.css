@@ -17,18 +17,18 @@
 }
 
 .location {
-  font-size: 1.5rem;
+  font-size: var(--font-size-lg);
   font-weight: 500;
 }
 
 .temperature {
   text-align: center;
-  font-size: 4rem;
+  font-size: var(--font-size-xl);
   font-weight: 700;
 }
 
 .description {
   text-align: center;
-  font-size: 1.3rem;
+  font-size: var(--font-size-md);
   font-weight: 400;
 }

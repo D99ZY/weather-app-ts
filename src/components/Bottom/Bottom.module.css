@@ -9,16 +9,23 @@
   text-align: center;
   width: 100%;
   margin: 1rem auto;
-  padding: 0.8rem 1rem;
-  background-color: rgba(255,255,255,0.15);
-  border-radius: 20px;
+  padding: var(--padding-sm) var(--padding-md);
+  background-color: rgba(255,255,255,0.2);
+  border-radius: 50px;
 }
 
 p {
   color: white;
-  font-size: 1rem;
+  font-size: var(--font-size-sm);
 }
 
 .bold {
  font-weight: 700;
+}
+
+/* Media Queries */
+@media (max-width: 420px), (max-height: 300px) {
+  p {
+    font-size: var(--font-size-xs);
+  }
 }
