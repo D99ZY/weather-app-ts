@@ -2,7 +2,7 @@ import { useRef, useState } from 'react';
 import type { InputProps } from '../../types/input.ts';
 import styles from './Input.module.css';
 
-const Input = ({ handleSearch }: InputProps) => {
+const Input = ({ onSearch }: InputProps) => {
   const [value, setValue] = useState<string>('');
 
   const inputRef = useRef<HTMLInputElement>(null);
@@ -17,7 +17,7 @@ const Input = ({ handleSearch }: InputProps) => {
         onChange={(e) => setValue(e.currentTarget.value)}
         onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
           if (e.key === 'Enter') {
-            handleSearch(value);
+            onSearch(value);
             setValue('');
             e.currentTarget.blur();
           }

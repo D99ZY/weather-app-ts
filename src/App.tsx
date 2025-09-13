@@ -15,7 +15,7 @@ function App() {
           <i className="fa-solid fa-gear" />
         ) : (
           <>
-            <Input handleSearch={handleSearch} />
+            <Input onSearch={handleSearch} />
             <Top geoData={geoData} weatherData={weatherData} />
             <Bottom weatherData={weatherData} />
           </>
